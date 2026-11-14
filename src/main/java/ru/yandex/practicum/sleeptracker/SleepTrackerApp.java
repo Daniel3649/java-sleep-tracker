@@ -1,8 +1,7 @@
 package ru.yandex.practicum.sleeptracker;
 
 import ru.yandex.practicum.sleeptracker.domain.SleepingSession;
-import ru.yandex.practicum.sleeptracker.function.SleepAnalysisResult;
-import ru.yandex.practicum.sleeptracker.function.SleepingSessionCounter;
+import ru.yandex.practicum.sleeptracker.function.*;
 import ru.yandex.practicum.sleeptracker.io.FileLogReader;
 
 import java.nio.file.Path;
@@ -17,9 +16,13 @@ public class SleepTrackerApp {
     );
 
     private static final List<
-            Function<List<SleepingSession>, SleepAnalysisResult>
+            Function<List<SleepingSession>, ? extends SleepAnalysisResult<?>>
             > functions = List.of(
-            new SleepingSessionCounter()
+            new SleepingSessionCounter(),
+            new MInSleepingSessionDurationCounter(),
+            new MaxSleepingSessionDurationCounter(),
+            new AvgSleepingSessionCounter(),
+            new SleepingSessionCounterByState()
     );
 
     public static void main(String[] args) {
@@ -43,9 +46,9 @@ public class SleepTrackerApp {
 
         try {
             functions.forEach(function -> {
-                    SleepAnalysisResult result = function.apply(sleepingSessions);
+                    SleepAnalysisResult<?> result = function.apply(sleepingSessions);
                     String message = String.format(
-                            "%s: %d",
+                            "%s: %s",
                             result.context(),
                             result.value()
                     );

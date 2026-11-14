@@ -6,16 +6,16 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.List;
 
-public final class SleepingSessionCounter implements Function<List<SleepingSession>, SleepAnalysisResult> {
+public final class SleepingSessionCounter implements Function<List<SleepingSession>, SleepAnalysisResult<Long>> {
     private static final String CONTEXT_INFO = "Количество сессий сна";
 
     @Override
-    public SleepAnalysisResult apply(List<SleepingSession> sleepingSessions) {
+    public SleepAnalysisResult<Long> apply(List<SleepingSession> sleepingSessions) {
         Objects.requireNonNull(sleepingSessions, "sleepingSessions не может быть null");
 
-        return new SleepAnalysisResult(
+        return new SleepAnalysisResult<>(
                 CONTEXT_INFO,
-                sleepingSessions.size()
+                (long) sleepingSessions.size()
         );
     }
 }
