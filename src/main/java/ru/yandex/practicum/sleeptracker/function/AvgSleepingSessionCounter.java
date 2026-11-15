@@ -15,12 +15,12 @@ public final class AvgSleepingSessionCounter
     public SleepAnalysisResult<Double> apply(List<SleepingSession> sleepingSessionList) {
         Objects.requireNonNull(sleepingSessionList, "sleepingSessionList не должен быть null");
 
-        Double averageDuration = sleepingSessionList.stream().
-                mapToLong(sleepingSession -> Duration.between(
+        Double averageDuration = sleepingSessionList.stream()
+                .mapToLong(sleepingSession -> Duration.between(
                                 sleepingSession.startTime(), sleepingSession.endTime()
                         ).toMinutes()
-                ).
-                average()
+                )
+                .average()
                 .orElse(0L);
 
         return new SleepAnalysisResult<>(

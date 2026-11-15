@@ -15,12 +15,12 @@ public final class MaxSleepingSessionDurationCounter
     public SleepAnalysisResult<Long> apply(List<SleepingSession> sleepingSessionList) {
         Objects.requireNonNull(sleepingSessionList, "sleepingSessionList не должен быть null");
 
-        Long maxDuration = sleepingSessionList.stream().
-                mapToLong(sleepingSession -> Duration.between(
+        Long maxDuration = sleepingSessionList.stream()
+                .mapToLong(sleepingSession -> Duration.between(
                                 sleepingSession.startTime(), sleepingSession.endTime()
                         ).toMinutes()
-                ).
-                max()
+                )
+                .max()
                 .orElse(0L);
 
         return new SleepAnalysisResult<>(

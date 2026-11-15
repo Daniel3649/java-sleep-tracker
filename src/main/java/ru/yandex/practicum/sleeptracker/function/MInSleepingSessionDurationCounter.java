@@ -15,12 +15,12 @@ public final class MInSleepingSessionDurationCounter
     public SleepAnalysisResult<Long> apply(List<SleepingSession> sleepingSessionList) {
         Objects.requireNonNull(sleepingSessionList, "sleepingSessionList не должен быть null");
 
-        Long minDuration = sleepingSessionList.stream().
-                mapToLong(sleepingSession -> Duration.between(
+        Long minDuration = sleepingSessionList.stream()
+                .mapToLong(sleepingSession -> Duration.between(
                         sleepingSession.startTime(), sleepingSession.endTime()
                         ).toMinutes()
-                ).
-                min()
+                )
+                .min()
                 .orElse(0L);
 
         return new SleepAnalysisResult<>(
