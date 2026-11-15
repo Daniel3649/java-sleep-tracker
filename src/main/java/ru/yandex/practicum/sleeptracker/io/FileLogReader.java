@@ -29,9 +29,9 @@ public final class FileLogReader {
             "BAD", SleepingState.BAD
     );
 
-    private static final String LOG_SEPARATOR = ":";
+    private static final String LOG_SEPARATOR = ";";
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
     private FileLogReader() {}
 
@@ -81,7 +81,7 @@ public final class FileLogReader {
 
         if (parts.length != 3) {
             String message = String.format("Некорректный формат лога: %s. Правильный формат: " +
-                    "<время начала сна>:<время окончания сна>:<состояние сна>", text);
+                    "<время начала сна>;<время окончания сна>;<состояние сна>", text);
             logger.log(Level.WARNING, message);
             return Optional.empty();
         }
