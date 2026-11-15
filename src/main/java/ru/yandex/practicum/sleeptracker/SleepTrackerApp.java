@@ -33,6 +33,7 @@ public class SleepTrackerApp {
                     Level.SEVERE,
                     "Для работы программы требуется 1 аргумент - путь к файлу с логами"
             );
+            System.exit(1);
             return;
         }
 
@@ -43,6 +44,7 @@ public class SleepTrackerApp {
             );
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
+            System.exit(1);
             return;
         }
 
@@ -59,6 +61,7 @@ public class SleepTrackerApp {
             );
         } catch (Exception e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
+            System.exit(1);
         }
     }
 }
