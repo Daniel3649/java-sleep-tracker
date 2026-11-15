@@ -23,7 +23,8 @@ public class SleepTrackerApp {
             new MaxSleepingSessionDurationCounter(),
             new AvgSleepingSessionCounter(),
             new SleepingSessionCounterByState(),
-            new SleeplessNightCounter()
+            new SleeplessNightCounter(),
+            new ChronotypeAnalyzer()
     );
 
     public static void main(String[] args) {
