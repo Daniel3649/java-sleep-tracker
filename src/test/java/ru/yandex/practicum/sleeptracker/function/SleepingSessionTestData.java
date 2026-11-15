@@ -6,7 +6,8 @@ import ru.yandex.practicum.sleeptracker.domain.SleepingState;
 import java.time.LocalDateTime;
 
 final class SleepingSessionTestData {
-    private SleepingSessionTestData() {}
+    private SleepingSessionTestData() {
+    }
 
     static SleepingSession session(String start, String end) {
         return session(start, end, SleepingState.NORMAL);

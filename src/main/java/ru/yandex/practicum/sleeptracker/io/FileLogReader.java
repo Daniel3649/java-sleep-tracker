@@ -33,7 +33,8 @@ public final class FileLogReader {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
-    private FileLogReader() {}
+    private FileLogReader() {
+    }
 
     public static List<SleepingSession> readAllSleepingSessions(Path path) throws IOException {
         Objects.requireNonNull(path, "path не может быть null");

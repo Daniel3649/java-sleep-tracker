@@ -6,4 +6,5 @@ public record SleepingSession(
         LocalDateTime startTime,
         LocalDateTime endTime,
         SleepingState state
-) {}
+) {
+}

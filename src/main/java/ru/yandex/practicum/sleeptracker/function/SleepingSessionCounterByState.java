@@ -12,7 +12,8 @@ public final class SleepingSessionCounterByState
     private String contextInfo = "Количество сессий с плохим качеством сна";
     private SleepingState sleepingState = SleepingState.BAD;
 
-    public SleepingSessionCounterByState() {}
+    public SleepingSessionCounterByState() {
+    }
 
     public SleepingSessionCounterByState(String contextInfo, SleepingState sleepingState) {
         this.contextInfo = contextInfo;
